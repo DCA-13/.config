@@ -1,0 +1,51 @@
+command_timeout = 1000
+format = '''
+ $username@$hostname $directory$git_branch$haskell$python$c$time
+[](bold green) '''
+
+[directory]
+style = "fg:purple"
+format = "[$path]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = ""
+style = "fg:red"
+format = '[ $symbol $branch]($style)'
+
+[haskell]
+symbol = ""
+style = "fg:yellow"
+format = ' via[ $symbol ($version)]($style)'
+
+[python]
+symbol = ""
+style = "fg:blue"
+format = ' via[ $symbol ($version)]($style)'
+
+[c]
+symbol = ""
+style = "fg:blue"
+format = ' via[ $symbol ($version(-$name))]($style)'
+
+[username]
+show_always = true
+style_user = "fg:green"
+style_root = "fg:red"
+format = '[$user](bold $style)'
+disabled = false
+
+[hostname]
+ssh_only = false
+format = '[$hostname](bold yellow)'
+disabled = false
+
+[time]
+disabled = false
+time_format = "%R"
+style = "fg:bright-white"
+format = '[ $time]($style)'
+
+# Disable the blank line at the start of the prompt
+# add_newline = false

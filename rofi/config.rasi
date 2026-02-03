@@ -1,0 +1,12 @@
+configuration {
+  modes: [ combi, drun, window ];
+  combi-modes: [ window, drun ];
+}
+
+@theme "spaceduck"
+
+// element {
+//   orientation: horizontal;
+//   children: [ element-text, element-icon ];
+//   spacing: 5px;
+// }

@@ -1,0 +1,10 @@
+*
+!*/
+!.gitignore
+!xmonad/*
+!xmobarrc
+!fastfetch/*
+!rofi/*
+!starship.toml
+!greenclip.toml
+nvim/
