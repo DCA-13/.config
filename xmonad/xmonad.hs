@@ -218,7 +218,7 @@ mySpacing = spacingWithEdge 3
 myLayout =
   avoidStruts $
     renamed [Replace "Spiral"] (mySpacing (spiral (6 / 7)))
-    ||| renamed [Replace "Tall"] (mySpacing tall)
+    -- ||| renamed [Replace "Tall"] (mySpacing tall)
     ||| renamed [Replace "Full"] (mySpacing Full)
     ||| renamed [Replace "Wide"] (mySpacing (Mirror tall))
   where
