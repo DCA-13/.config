@@ -1,4 +1,4 @@
-Config { 
+Config {
 
    -- appearance
      font =         "Hack Nerd Font 14"
@@ -11,7 +11,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = " %XMonadLog%}%cpu% │ %memory% │ %dynnetwork%{%LEVC% │ %battery% │ %date% "
+   , template = " %XMonadLog%}%cpu% │ %memory% │ %dynnetwork%{%LEVC% │ %default:Master% │ %battery% │ %date% "
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -35,12 +35,12 @@ Config {
    --   The --template option controls how the plugin is displayed. Text
    --   color can be set by enclosing in <fc></fc> tags. For more details
    --   see http://projects.haskell.org/xmobar/#system-monitor-plugins.
-   , commands = 
+   , commands =
 
         [ Run XMonadLog
         -- weather monitor
-        , Run Weather "LEVC" [ "--template", "<fc=#f2ce00><tempC></fc>°C | <fc=#00a3cc><rh></fc>% RH"
-                             ] 36000
+        , Run Weather "LEVC" [ "--template", "<fc=#f2ce00><tempC></fc>°C <fc=#00a3cc><rh></fc>%"
+                             ] 600
 
         -- network activity monitor (dynamic interface resolution)
         , Run DynNetwork     [ "--template" , "<tx>kB/s|<rx>kB/s"
@@ -68,7 +68,7 @@ Config {
         --                     , "--normal"   , "#f2ce00"
         --                     , "--high"     , "#e33400"
         --                     ] 50
-                          
+
         -- memory usage monitor
         , Run Memory         [ "--template" ," : <usedratio>%"
                              , "--Low"      , "20"        -- units: %
@@ -88,20 +88,31 @@ Config {
 
                              , "--" -- battery specific options
                                        -- discharging status
-                                       , "-o"	, " <left>% (<timeleft>)"
+                                       , "-o", " <left>% (<timeleft>)"
                                        -- AC "on" status
-                                       , "-O"	, "󱐋 <left>%"
+                                       , "-O", "󱐋 <left>%"
                                        -- charged status
-                                       , "-i"	, " Charged"
+                                       , "-i", " Charged"
                              ] 50
 
-        -- time and date indicator 
+        -- time and date indicator
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
         , Run Date           "%F (%a) %T" "date" 10
 
+        -- volume
+        , Run Volume         "default" "Master"
+                             -- [ "--template", " : <volume>% <status>"
+                             [ "-t"    , "<status>: <volume>%"
+                             , "--"
+                             , "--on"  , " "
+                             , "--off" , " "
+                             , "--onc" , "#5ccc96"
+                             , "--offc", "#e33400"
+                             ] 1
         -- keyboard layout indicator
-        , Run Kbd            [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")
-                             , ("us"         , "<fc=#8B0000>US</fc>")
-                             ]
+        -- , Run Kbd            [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")
+        --                      , ("us"         , "<fc=#8B0000>US</fc>")
+        --                      ]
         ]
    }
+-- vim: ft=haskell
