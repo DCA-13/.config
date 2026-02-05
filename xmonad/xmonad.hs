@@ -30,7 +30,7 @@ import qualified Data.Map        as M
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
-myTerminal      = "konsole"
+myTerminal = "konsole"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -41,13 +41,13 @@ myClickJustFocuses :: Bool
 myClickJustFocuses = False
 
 -- Width of the window border in pixels.
-myBorderWidth   = 2
+myBorderWidth = 2
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
-myModMask       = mod4Mask
+myModMask = mod4Mask
 
 -- The default number of workspaces (virtual screens) and their names.
 -- By default we use numeric strings, but any string may be used as a
@@ -57,7 +57,7 @@ myModMask       = mod4Mask
 -- A tagging example:
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 myNormalBorderColor  = "#7a5ccc"
@@ -74,13 +74,13 @@ myXmobarPP = def
   , ppExtras        = [logTitles formatFocused formatUnfocused]
   }
   where
-    green = xmobarColor "#5ccc96" ""
-    blue = xmobarColor "#00a3cc" ""
-    yellow = xmobarColor "#f2ce00" ""
-    red = xmobarColor "#e33400" ""
-    white = xmobarColor "#ffffff" ""
+    green    = xmobarColor "#5ccc96" ""
+    blue     = xmobarColor "#00a3cc" ""
+    yellow   = xmobarColor "#f2ce00" ""
+    red      = xmobarColor "#e33400" ""
+    white    = xmobarColor "#ffffff" ""
     lowWhite = xmobarColor "#aaaaaa" ""
-    purple = xmobarColor "#7a5ccc" ""
+    purple   = xmobarColor "#7a5ccc" ""
     formatFocused   = wrap (white    "[") (white    "]") . purple  . ppWindow
     formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . yellow  . ppWindow
     ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 24
