@@ -284,6 +284,7 @@ myLogHook = return ()
 myStartupHook = do
   spawnOnce "compton &"
   spawnOnce "feh --bg-fill --no-fehbg ~/.wallpapers/emerald.svg"
+  spawnOnce "nmcli connection up MIWIFI_AhaT passwd-file ~/passwd"
   -- spawnOnce "nitrogen --restore &"
   -- spawnOnce "trayer --edge top --align right --SetDockType true \
   --           \--SetPartialStrut true --expand true --width 10 \
@@ -294,9 +295,6 @@ myStartupHook = do
 
 -- Run xmonad with the settings you specify. No need to modify this.
 main = xmonad . ewmhFullscreen . ewmh . myXmobarProp $ defaults
-  -- do
-  --   xmproc <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobar.config"
-  --   xmonad $ docks defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
