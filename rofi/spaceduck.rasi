@@ -6,7 +6,7 @@
     black:                       rgba ( 0, 0, 0, 100 % );
     red:                         rgba ( 227, 52, 0, 100 % );
     green:                       rgba ( 92, 204, 150, 100 % );
-    yellow:                       rgba ( 242, 206, 0, 100 % );
+    yellow:                      rgba ( 242, 206, 0, 100 % );
     blue:                        rgba ( 0, 163, 204, 100 % );
     lilac:                       rgba ( 179, 161, 230, 100 % );
     purple:                      rgba ( 122, 92, 204, 100 % );
