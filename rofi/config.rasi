@@ -1,6 +1,14 @@
 configuration {
   modes: [ combi, drun, window ];
   combi-modes: [ window, drun ];
+  kb-row-up: "Up,Control+k";
+  kb-row-down: "Down,Control+j";
+  kb-mode-next: "Shift+Right,Control+Tab,Control+l";
+  kb-mode-previous: "Control+ISO_Left_Tab,Control+h";
+  kb-accept-entry: "Control+m,Return,KP_Enter";
+  kb-remove-to-eol: "Control+Shift+e";
+  kb-remove-char-back: "BackSpace,Shift+BackSpace";
+  kb-mode-complete: "Control+Shift+l";
 }
 
 @theme "spaceduck"
