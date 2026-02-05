@@ -159,9 +159,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Restart xmonad
     , ((modm .|. shiftMask, xK_r     ), spawn "xmonad --recompile; xmonad --restart")
-
-    -- Run xmessage with a summary of the default keybindings (useful for beginners)
-    -- , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     ]
     ++
 
@@ -322,10 +319,10 @@ defaults = def {
     } `additionalKeysP`
     [ ("C-<Print>", spawn "scrot -s ~/Pictures/Screenshots/%F-%H%M%S.jpg")
     , ("<Print>"  , spawn "scrot ~/Pictures/Screenshots/%F-%H%M%S.jpg")
-    , ("<XF86MonBrightnessUp>",  spawn "brightnessctl s +10%")
+    , ("<XF86MonBrightnessUp>"  , spawn "brightnessctl s +10%")
     , ("<XF86MonBrightnessDown>", spawn "brightnessctl s 10%-")
-    , ("<XF86AudioMute>", spawn "amixer set \"Master\" toggle")
-    , ("<XF86AudioLowerVolume>", spawn "amixer set \"Master\" \"3dB-\"")
-    , ("<XF86AudioRaiseVolume>", spawn "amixer set \"Master\" \"3dB+\"")
+    , ("<XF86AudioMute>"       , spawn "amixer set Master toggle")
+    , ("<XF86AudioLowerVolume>", spawn "amixer set Master 3dB-")
+    , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 3dB+")
     ]
 
