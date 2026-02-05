@@ -285,10 +285,6 @@ myStartupHook = do
   spawnOnce "compton &"
   spawnOnce "feh --bg-fill --no-fehbg ~/.wallpapers/emerald.svg"
   spawnOnce "nmcli connection up MIWIFI_AhaT passwd-file ~/passwd"
-  -- spawnOnce "nitrogen --restore &"
-  -- spawnOnce "trayer --edge top --align right --SetDockType true \
-  --           \--SetPartialStrut true --expand true --width 10 \
-  --           \--transparent false --tint 0x0f111b --height 21"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -326,5 +322,10 @@ defaults = def {
     } `additionalKeysP`
     [ ("C-<Print>", spawn "scrot -s ~/Pictures/Screenshots/%F-%H%M%S.jpg")
     , ("<Print>"  , spawn "scrot ~/Pictures/Screenshots/%F-%H%M%S.jpg")
+    , ("<XF86MonBrightnessUp>",  spawn "brightnessctl s +10%")
+    , ("<XF86MonBrightnessDown>", spawn "brightnessctl s 10%-")
+    , ("<XF86AudioMute>", spawn "amixer set \"Master\" toggle")
+    , ("<XF86AudioLowerVolume>", spawn "amixer set \"Master\" \"3dB-\"")
+    , ("<XF86AudioRaiseVolume>", spawn "amixer set \"Master\" \"3dB+\"")
     ]
 
