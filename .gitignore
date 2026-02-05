@@ -5,6 +5,7 @@
 !xmobarrc
 !fastfetch/*
 !rofi/*
+!bat/*/*/*
 !starship.toml
 !greenclip.toml
 nvim/
