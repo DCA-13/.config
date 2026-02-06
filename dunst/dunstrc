@@ -86,14 +86,14 @@
     mouse_right_click = close_all
 
 [urgency_low]
-    background = "#30365f"
+    background = "#16172d"
     foreground = "#dddddd"
-    frame_color = "#00a3cc"
+    frame_color = "#5ccc96"
     timeout = 10
     default_icon = dialog-information
 
 [urgency_normal]
-    background = "#16172d" #30365F
+    background = "#16172d"
     foreground = "#ffffff"
     frame_color = "#00a3cc"
     timeout = 10
@@ -101,9 +101,9 @@
     default_icon = dialog-information
 
 [urgency_critical]
-    background = "#e33400"
+    background = "#16172d"
     foreground = "#ffffff"
-    frame_color = "#b22900"
+    frame_color = "#e33400"
     timeout = 0
     override_pause_level = 60
     default_icon = dialog-warning
