@@ -234,6 +234,7 @@ myStartupHook = do
   spawnOnce "picom -b --config ~/.config/picom/picom.conf"
   spawnOnce "feh --bg-fill --no-fehbg ~/.wallpapers/emerald.svg"
   spawnOnce "nmcli connection up MIWIFI_AhaT passwd-file ~/passwd"
+  spawnOnce "dunst"
 
 ------------------------------------------------------------------------
 
