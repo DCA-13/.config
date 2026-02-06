@@ -12,6 +12,7 @@ import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
+import XMonad.Layout.NoBorders
 import XMonad.Layout.Renamed
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Spacing
@@ -166,7 +167,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 
 mySpacing = spacingWithEdge 3
 myLayout =
-  avoidStruts $
+  lessBorders OnlyFloat . avoidStruts $
     renamed [Replace "Spiral"] (mySpacing (spiral (6 / 7)))
     -- ||| renamed [Replace "Tall"] (mySpacing tall)
     ||| renamed [Replace "Full"] (mySpacing Full)
