@@ -6,6 +6,7 @@
 !fastfetch/*
 !rofi/*
 !bat/*/*/*
+!picom/*
 !starship.toml
 !greenclip.toml
 nvim/

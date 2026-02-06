@@ -167,7 +167,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 
 mySpacing = spacingWithEdge 3
 myLayout =
-  lessBorders OnlyFloat . avoidStruts $
+  avoidStruts $
     renamed [Replace "Spiral"] (mySpacing (spiral (6 / 7)))
     -- ||| renamed [Replace "Tall"] (mySpacing tall)
     ||| renamed [Replace "Full"] (mySpacing Full)
@@ -231,7 +231,7 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
-  spawnOnce "compton &"
+  spawnOnce "picom -b --config ~/.config/picom/picom.conf"
   spawnOnce "feh --bg-fill --no-fehbg ~/.wallpapers/emerald.svg"
   spawnOnce "nmcli connection up MIWIFI_AhaT passwd-file ~/passwd"
 
