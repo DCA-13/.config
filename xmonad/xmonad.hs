@@ -1,12 +1,3 @@
---
--- xmonad example config file.
---
--- A template showing all available configuration hooks,
--- and how to override the defaults in your own xmonad.hs conf file.
---
--- Normally, you'd only override those defaults you care about.
---
-
 import XMonad
 import Data.Monoid
 import System.Exit
@@ -28,11 +19,9 @@ import XMonad.Layout.Spiral
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
--- The preferred terminal program, which is used in a binding below and by
--- certain contrib modules.
 myTerminal = "konsole"
 
--- Whether focus follows the mouse pointer.
+-- Whether focus follows the mouse pointer
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True
 
@@ -40,29 +29,18 @@ myFocusFollowsMouse = True
 myClickJustFocuses :: Bool
 myClickJustFocuses = False
 
--- Width of the window border in pixels.
+-- Width of the window border in pixels
 myBorderWidth = 2
 
--- modMask lets you specify which modkey you want to use. The default
--- is mod1Mask ("left alt").  You may also consider using mod3Mask
--- ("right alt"), which does not conflict with emacs keybindings. The
--- "windows key" is usually mod4Mask.
+-- "windows key" is mod4Mask
 myModMask = mod4Mask
 
--- The default number of workspaces (virtual screens) and their names.
--- By default we use numeric strings, but any string may be used as a
--- workspace name. The number of workspaces is determined by the length
--- of this list.
---
--- A tagging example:
---
--- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
+-- The default number of workspaces (virtual screens) and their names
 myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 
--- Border colors for unfocused and focused windows, respectively.
+-- Border colors for unfocused and focused windows
 myNormalBorderColor  = "#7a5ccc"
 myFocusedBorderColor = "#5ccc96"
-
 
 myXmobarPP :: PP
 myXmobarPP = def
@@ -88,18 +66,14 @@ myXmobarPP = def
 myXmobarProp = withEasySB (statusBarProp "xmobar ~/.config/xmobarrc" (pure myXmobarPP)) defToggleStrutsKey
 
 ------------------------------------------------------------------------
--- Key bindings. Add, modify or remove key bindings here.
---
+-- Key bindings
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
-    -- launch dmenu
+    -- launch rofi
     , ((modm,               xK_p     ), spawn "rofi -modes \"drun,window\" -show drun")
-
-    -- launch gmrun
-    -- , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
 
     -- close focused window
     , ((modm,               xK_q     ), kill)
@@ -108,7 +82,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_space ), sendMessage NextLayout)
 
     --  Reset the layouts on the current workspace to default
-    -- , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+    , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
 
     -- Resize viewed windows to the correct size
     , ((modm,               xK_n     ), refresh)
@@ -150,8 +124,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
 
     -- Toggle the status bar gap
-    -- Use this binding with avoidStruts from Hooks.ManageDocks.
-    -- See also the statusBar function from Hooks.DynamicLog.
     , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
@@ -161,56 +133,37 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_r     ), spawn "xmonad --recompile; xmonad --restart")
     ]
     ++
-
-    --
     -- mod-[1..9], Switch to workspace N
     -- mod-shift-[1..9], Move client to workspace N
-    --
     [((m .|. modm, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
-    -- ++
-
-    --
+    ++
     -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
-    --
-    -- [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-    --     | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-    --     , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-
+    [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
 --
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
-
     -- mod-button1, Set the window to floating mode and move by dragging
     [ ((modm, button1), (\w -> focus w >> mouseMoveWindow w
                                        >> windows W.shiftMaster))
-
     -- mod-button2, Raise the window to the top of the stack
     , ((modm, button2), (\w -> focus w >> windows W.shiftMaster))
 
     -- mod-button3, Set the window to floating mode and resize by dragging
     , ((modm, button3), (\w -> focus w >> mouseResizeWindow w
                                        >> windows W.shiftMaster))
-
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
     ]
 
 ------------------------------------------------------------------------
 -- Layouts:
 
--- You can specify and transform your layouts by modifying these values.
--- If you change layout bindings be sure to use 'mod-shift-space' after
--- restarting (with 'mod-q') to reset your layout state to the new
--- defaults, as xmonad preserves your old layout settings by default.
---
--- The available layouts.  Note that each layout is separated by |||,
--- which denotes layout choice.
---
--- spacingWithEdge 3 (tiled ||| Mirror tiled ||| Full)
 mySpacing = spacingWithEdge 3
 myLayout =
   avoidStruts $
@@ -220,14 +173,12 @@ myLayout =
     ||| renamed [Replace "Wide"] (mySpacing (Mirror tall))
   where
     tall = ResizableTall 1 (3 / 100) (11 / 20) []
-     -- default tiling algorithm partitions the screen into two panes
-     -- tiled   = Tall nmaster delta ratio
      -- The default number of windows in the master pane
      -- nmaster = 1
      -- Default proportion of screen occupied by master pane
-     -- ratio   = 1/2
+     -- ratio   = 11 / 20
      -- Percent of screen to increment by when resizing panes
-     -- delta   = 3/100
+     -- delta   = 3 / 100
 
 ------------------------------------------------------------------------
 -- Window rules:
@@ -284,17 +235,12 @@ myStartupHook = do
   spawnOnce "nmcli connection up MIWIFI_AhaT passwd-file ~/passwd"
 
 ------------------------------------------------------------------------
--- Now run xmonad with all the defaults we set up.
 
--- Run xmonad with the settings you specify. No need to modify this.
 main = xmonad . ewmhFullscreen . ewmh . myXmobarProp $ defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
 -- use the defaults defined in xmonad/XMonad/Config.hs
---
--- No need to modify this.
---
 defaults = def {
       -- simple stuff
         terminal           = myTerminal,
@@ -321,8 +267,8 @@ defaults = def {
     , ("<Print>"  , spawn "scrot ~/Pictures/Screenshots/%F-%H%M%S.jpg")
     , ("<XF86MonBrightnessUp>"  , spawn "brightnessctl s +10%")
     , ("<XF86MonBrightnessDown>", spawn "brightnessctl s 10%-")
-    , ("<XF86AudioMute>"       , spawn "amixer set Master toggle")
-    , ("<XF86AudioLowerVolume>", spawn "amixer set Master 3dB-")
-    , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 3dB+")
+    , ("<XF86AudioMute>"        , spawn "amixer set Master toggle")
+    , ("<XF86AudioLowerVolume>" , spawn "amixer set Master 3dB-")
+    , ("<XF86AudioRaiseVolume>" , spawn "amixer set Master 3dB+")
     ]
 
