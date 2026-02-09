@@ -60,9 +60,9 @@ myXmobarPP = def
     white    = xmobarColor "#ffffff" ""
     lowWhite = xmobarColor "#aaaaaa" ""
     purple   = xmobarColor "#7a5ccc" ""
-    formatFocused   = wrap (white    "[") (white    "]") . purple  . ppWindow
-    formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . yellow  . ppWindow
-    ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 24
+    formatFocused   = wrap (white    "[") (white    "]") . yellow  . ppWindow
+    formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . purple  . ppWindow
+    ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 16
 
 myXmobarProp = withEasySB (statusBarProp "xmobar ~/.config/xmobarrc" (pure myXmobarPP)) defToggleStrutsKey
 
