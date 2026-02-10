@@ -1,25 +1,25 @@
 Config {
 
    -- appearance
-     font =         "Hack Nerd Font 14"
-   , bgColor =      "#0f111b"
-   , fgColor =      "#ecf0c1"
-   , position =     Static { xpos = 0 , ypos = 0, width = 1920, height = 22 }
-   , border =       BottomB
-   , borderColor =  "#72ffbb" -- #5ccc96
+     font        = "Hack Nerd Font 14"
+   , bgColor     = "#0f111b"
+   , fgColor     = "#ecf0c1"
+   , position    = Static { xpos = 0 , ypos = 0, width = 1920, height = 22 }
+   , border      = BottomB
+   , borderColor = "#72ffbb" -- #5ccc96
 
    -- layout
-   , sepChar =  "%"   -- delineator between plugin names and straight text
+   , sepChar  = "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
    , template = " %XMonadLog%}%cpu% │ %memory% │ %dynnetwork%{%LEVC% │ %default:Master% │ %battery% │ %date% "
 
    -- general behavior
-   , lowerOnStart =     True    -- send to bottom of window stack on start
-   , hideOnStart =      False   -- start with window unmapped (hidden)
-   , allDesktops =      True    -- show on all desktops
+   , lowerOnStart     = True    -- send to bottom of window stack on start
+   , hideOnStart      = False   -- start with window unmapped (hidden)
+   , allDesktops      = True    -- show on all desktops
    , overrideRedirect = True    -- set the Override Redirect flag (Xlib)
-   , pickBroadest =     False   -- choose widest display (multi-monitor)
-   , persistent =       True    -- enable/disable hiding (True = disabled)
+   , pickBroadest     = False   -- choose widest display (multi-monitor)
+   , persistent       = True    -- enable/disable hiding (True = disabled)
 
    -- plugins
    --   Numbers can be automatically colored according to their value. xmobar
@@ -88,7 +88,7 @@ Config {
 
                              , "--" -- battery specific options
                                        -- discharging status
-                                       , "-o", " <left>% (<timeleft>)"
+                                       , "-o", " <left>%"
                                        -- AC "on" status
                                        , "-O", "󱐋 <left>%"
                                        -- charged status
@@ -97,12 +97,12 @@ Config {
 
         -- time and date indicator
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-        , Run Date           "%F (%a) %T" "date" 10
+        , Run Date           "%F %a %T" "date" 10
 
         -- volume
         , Run Volume         "default" "Master"
                              -- [ "--template", " : <volume>% <status>"
-                             [ "-t"    , "<status>: <volume>%"
+                             [ "-t"    , "<status> <volume>%"
                              , "--"
                              , "--on"  , " "
                              , "--off" , " "
