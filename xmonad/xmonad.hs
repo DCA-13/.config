@@ -51,6 +51,7 @@ myXmobarPP = def
   , ppUrgent        = red . wrap (yellow "!") (yellow "!")
   , ppOrder         = \[ws, l, _, wins] -> [ws, l, wins]
   , ppExtras        = [logTitles formatFocused formatUnfocused]
+  , ppSep           = darkBlue " │ "
   }
   where
     green    = xmobarColor "#5ccc96" ""
@@ -58,10 +59,10 @@ myXmobarPP = def
     yellow   = xmobarColor "#f2ce00" ""
     red      = xmobarColor "#e33400" ""
     white    = xmobarColor "#ffffff" ""
-    lowWhite = xmobarColor "#aaaaaa" ""
+    darkBlue = xmobarColor "#41497f" ""
     purple   = xmobarColor "#7a5ccc" ""
     formatFocused   = wrap (white    "[") (white    "]") . yellow  . ppWindow
-    formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . purple  . ppWindow
+    formatUnfocused = wrap (darkBlue "[") (darkBlue "]") . purple  . ppWindow
     ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 16
 
 myXmobarProp = withEasySB (statusBarProp "xmobar ~/.config/xmobarrc" (pure myXmobarPP)) defToggleStrutsKey
@@ -171,7 +172,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 mySpacing = spacingWithEdge 3
 myLayout =
   avoidStruts $
-    renamed [Replace "Spiral"] (mySpacing (spiral (6 / 7)))
+    renamed [Replace "Spir"] (mySpacing (spiral (6 / 7)))
     -- ||| renamed [Replace "Tall"] (mySpacing tall)
     ||| renamed [Replace "Full"] (mySpacing Full)
     ||| renamed [Replace "Wide"] (mySpacing (Mirror tall))
