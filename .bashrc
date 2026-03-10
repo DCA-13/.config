@@ -126,6 +126,8 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export BAT_THEME="spaceduck"
 export MANPAGER="batcat -plman"
 
+source /usr/share/doc/fzf/examples/key-bindings.bash
+
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
