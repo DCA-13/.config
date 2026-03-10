@@ -76,10 +76,10 @@ conky.config = {
 	color3 = "#5ccc96",
 }
 
+-- ${alignc}${color0}${font2}${time %H:%M}${font}
+-- ${voffset 6}${alignc}${color0}${font3}${time %Y-%m-%d %A}${font}${color}
 conky.text = [[
-${alignc}${color0}${font2}${time %H:%M}${font}
-${voffset 6}${alignc}${color0}${font3}${time %Y-%m-%d %A}${font}${color}
-${voffset 18}${goto 12}${color3}CPU${goto 50}$cpu%
+${voffset 0}${goto 12}${color3}CPU${goto 50}$cpu%
 ${color2}${goto 12}${cpubar 8}
 ${voffset 5}${goto 12}$font${color1}${top name 1}$alignr$color${top cpu 1}%
 ${goto 12}${color1}${top name 2}$alignr$color${top cpu 2}%
@@ -89,23 +89,28 @@ ${color2}${goto 12}${membar 8}${color}
 ${goto 12}${voffset 5}${color1}${top_mem name 1}$alignr$color${top_mem mem_res 1}
 ${goto 12}${color1}${top_mem name 2}$alignr$color${top_mem mem_res 2}
 ${goto 12}${color1}${top_mem name 3}$alignr$color${top_mem mem_res 3}
-${color1}${hr}${color}
-${color1}[S]+[󰜷]+[ENTER]${alignr}${color2}open terminal${color}
-${color1}[S]+Q${alignr}${color2}close window${color}
-${color1}[S]+J/K${alignr}${color2}move win focus${color}
-${color1}[S]+[󰜷]+J/K${alignr}${color2}move window${color}
-${color1}[S]+[1-9]${alignr}${color2}switch workspace${color}
-${color1}[S]+[SPACE]${alignr}${color2}switch layout${color}
-${color1}[S]+[󰜷]+[1-9]${alignr}${color2}send window${color}
-${color1}[S]+H/L${alignr}${color2}shrink/expand${color}
-${color1}[S]+P${alignr}${color2}drun${color}
-${color1}[S]+B${alignr}${color2}toggle struts${color}
-${color1}${hr}${color}
-${color1}[S]+[LMB]${alignr}${color2}float move${color}
-${color1}[S]+[MMB]${alignr}${color2}float to top${color}
-${color1}[S]+[RMB]${alignr}${color2}float resize${color}
-${color1}${hr}${color}
-${color1}[S]+[SHIFT]+R${alignr}${color2}restart xmonad${color}
-${color1}[S]+[SHIFT]+Q${alignr}${color2}quit xmonad${color}
+${voffset 14}${goto 12}${color3}NET${goto 50}${downspeed wlp4s0}|${upspeed wlp4s0}
+${color2}${downspeedgraph wlp4s0 40,146 -l} ${upspeedgraph wlp4s0 40,146 -l}
+${voffset 14}${goto 12}${color3}Disk I/O$alignr${diskio}
+${goto 12}${color2}${diskiograph 40,300 -l}
+${voffset 14}${goto 12}${color3}UPTIME$alignr${uptime}
 ]]
+-- ${color1}${hr}${color}
+-- ${color1}[S]+[󰜷]+[ENTER]${alignr}${color2}open terminal${color}
+-- ${color1}[S]+Q${alignr}${color2}close window${color}
+-- ${color1}[S]+J/K${alignr}${color2}move win focus${color}
+-- ${color1}[S]+[󰜷]+J/K${alignr}${color2}move window${color}
+-- ${color1}[S]+[1-9]${alignr}${color2}switch workspace${color}
+-- ${color1}[S]+[SPACE]${alignr}${color2}switch layout${color}
+-- ${color1}[S]+[󰜷]+[1-9]${alignr}${color2}send window${color}
+-- ${color1}[S]+H/L${alignr}${color2}shrink/expand${color}
+-- ${color1}[S]+P${alignr}${color2}drun${color}
+-- ${color1}[S]+B${alignr}${color2}toggle struts${color}
+-- ${color1}${hr}${color}
+-- ${color1}[S]+[LMB]${alignr}${color2}float move${color}
+-- ${color1}[S]+[MMB]${alignr}${color2}float to top${color}
+-- ${color1}[S]+[RMB]${alignr}${color2}float resize${color}
+-- ${color1}${hr}${color}
+-- ${color1}[S]+[SHIFT]+R${alignr}${color2}restart xmonad${color}
+-- ${color1}[S]+[SHIFT]+Q${alignr}${color2}quit xmonad${color}
 -- vim: ft=lua

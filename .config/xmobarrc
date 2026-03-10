@@ -11,7 +11,7 @@ Config {
    -- layout
    , sepChar  = "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = " %XMonadLog%}%dynnetwork%{%LEVC% │ %default:Master% │ %battery% | %date% "
+   , template = " %XMonadLog%}{%LEVC% │ %default:Master% │ %battery% | %date% "
    -- , template = " %XMonadLog%}%cpu% │ %memory% │ %dynnetwork%{%LEVC% │ %default:Master% │ %battery% │ %date% "
 
    -- general behavior
